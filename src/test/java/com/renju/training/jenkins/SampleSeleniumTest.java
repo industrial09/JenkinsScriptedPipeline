@@ -1,5 +1,6 @@
 package com.renju.training.jenkins;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,19 +24,16 @@ public class SampleSeleniumTest {
 	
 	@Test
 	public void validateGoogleId() throws Exception {
-		System.out.println("Opening Browser");
-		driver.get("http://www.google.com");
-		System.out.println("Clicking Gmail Link");
-		driver.findElement(By.xpath("//a[contains(text(), 'Gmail')]")).click();
+		System.out.println("Opening Site");
+		driver.get("http://eaapp.somee.com/");
+		System.out.println("Entering credentials");
+		driver.findElement(By.xpath("//*[@id='loginLink']")).click();
+		driver.findElement(By.xpath("//*[@id='UserName']")).sendKeys("admin");
+		driver.findElement(By.xpath("//*[@id='Password']")).sendKeys("password");
 		System.out.println("Clicking Sign In link");
-		driver.findElement(By.xpath("/html/body/nav/div/a[2]")).click();
-		System.out.println("Entering username");
-		driver.findElement(By.xpath("//*[@id=\"identifierId\"]")).sendKeys("renju.jenkins.training");
-		System.out.println("Clicking Next button");
-		driver.findElement(By.xpath("//*[@id=\"identifierNext\"]/content/span")).click();
+		driver.findElement(By.xpath("//*[@value='Log in']")).click();
 		Thread.sleep(5000);
-		boolean textFound = driver.getPageSource().contains("Forgot password");
-		AssertJUnit.assertTrue(textFound);
+		Assert.assertTrue(driver.findElement(By.xpath("//*[contains(text(),'Hello admin')]")).isDisplayed());
 	}
 	
 	@AfterClass
