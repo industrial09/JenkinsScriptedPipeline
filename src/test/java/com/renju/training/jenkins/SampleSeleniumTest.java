@@ -33,6 +33,7 @@ public class SampleSeleniumTest {
 		System.out.println("Clicking Sign In link");
 		driver.findElement(By.xpath("//*[@value='Log in']")).click();
 		Thread.sleep(5000);
+		System.out.println("Hello Admin! text should be displayed");
 		Assert.assertTrue(driver.findElement(By.xpath("//*[contains(text(),'Hello admin')]")).isDisplayed());
 	}
 	
