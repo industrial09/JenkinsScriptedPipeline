@@ -1,0 +1,7 @@
+It is important to set in pom.xml file
+<properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  
+  as some Java components belongs to such version
